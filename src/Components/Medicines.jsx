@@ -1,10 +1,18 @@
-import React from 'react'
-import Header from './Header';
+import MedicineSidebar from './MedicineSidebar';
+import MedicineContainer from './MedicineContainer';
+// import api from "../api/product";
 
 const Medicines = () => {
+
+
   return (
-    <div>
-       <h1>This is medicines Page</h1>
+    <div className='mt-12 mb-4 mx-28 grid grid-cols-4  '>
+     <div className='col-span-1 '>
+       <MedicineSidebar />
+     </div>
+     <div className='col-span-3 '>
+        <MedicineContainer />
+     </div>
     </div>
   )
 }

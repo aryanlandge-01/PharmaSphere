@@ -1,9 +1,40 @@
-import Sliders from "./Sliders"
-
+import Sliders from "./Sliders";
+import ProductSliders from "./ProductSliders";
+import axios from 'axios';
+import { useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { addProducts } from '../utils/ItemSlice';
+import Dealoftheday from "./Dealoftheday";
+import TrendingNow from "./TrendingNow";
 
 
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+  const item = useSelector((store) => store.Items);
+
+  console.log(item);
+
+  const fetchData = () => {
+    return axios.get(`http://localhost:3000/data`);
+  };
+
+
+  useEffect(() => {
+     
+    fetchData()
+      .then((res) => {  
+       dispatch(addProducts(res.data));
+  
+        // console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+
+  }, []);
+
+
   return (
     <div>
         <div className="mt-12 ml-10 p-10 flex justify-between items-center">
@@ -23,9 +54,19 @@ const Home = () => {
             <img className="h-72 w-full rounded-lg " src="https://media.istockphoto.com/id/1300036753/photo/falling-antibiotics-healthcare-background.jpg?s=612x612&w=0&k=20&c=oquxJiLqE33ePw2qML9UtKJgyYUqjkLFwxT84Pr-WPk=" alt="heros_img" />
           </div>
         </div>
-         <Sliders />
-         <Sliders />
-         <Sliders />
+        <div className=""> 
+          <h1 className="mx-36 p-2 text-lg text-white font-semibold">Most Searched Products</h1>
+          <ProductSliders/>
+          <h1 className="mx-36 p-2 text-lg text-white font-semibold">Deal of the day</h1>
+          <Dealoftheday/>
+          <h1 className="mx-36 p-2 text-lg text-white font-semibold">Trending Now</h1>
+          <TrendingNow/>
+          <h1 className="mx-36 p-2 text-lg text-white font-semibold">Shop by health concerns</h1>
+          <Sliders />  
+        </div>
+         
+       
+   
        
      
     </div>

@@ -5,6 +5,9 @@ import Medicines from "./Components/Medicines";
 import Header from "./Components/Header";
 import Sevices from "./Components/Sevices";
 import Contact from "./Components/contact";
+import LoginForm from "./Components/LoginForm";
+import Footer from "./Components/Footer";
+import Productpage from "./Components/Productpage";
 
 
 
@@ -16,7 +19,7 @@ const App = () => {
       <div >
         <Header/>
         <Outlet/>   
-     
+        <Footer/>
       </div>
     )
   }
@@ -41,6 +44,14 @@ const App = () => {
         {
           path: "/contact",
           element: <Contact/>
+        },
+        {
+          path: "/login",
+          element: <LoginForm/>
+        },
+        {
+          path: "/product/:proId",
+          element: <Productpage/>
         }
       ]
     },
