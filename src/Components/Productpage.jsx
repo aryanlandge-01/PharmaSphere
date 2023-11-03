@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice";
 
 const Productpage = () => {
   
     const {proId} = useParams();
+    
+    const dispatch = useDispatch();
 
     const item = useSelector((store) => store.Items.Products);
 
@@ -22,7 +25,10 @@ const Productpage = () => {
     
 
     const {imageUrl,productName,price,shortDesc,prodHighlights,longDesc,ratings} = productWithDesiredId;
-
+    
+    const handleaddItem = (productWithDesiredId) => {
+            dispatch(addItem(productWithDesiredId));
+    }
 
   return (
     <div className="mx-auto my-20 w-3/4 rounded-lg h-screen shadow-xl bg-white">
@@ -35,7 +41,7 @@ const Productpage = () => {
                     <p className="truncate"> {longDesc} </p>
                     <h4>${price} Ratings-{ratings}stars </h4>
                     
-                    <button className="w-full  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button onClick={() => handleaddItem(productWithDesiredId)} className="w-full  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                           Add to Cart 
                     </button>
 

@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
 
 
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -9,9 +10,8 @@ import 'swiper/css/navigation';
 
 import { FreeMode, Pagination ,Navigation } from 'swiper/modules';
 
-const TrendingNow = () => {
+const Dealoftheday = () => {
 
-    
 
     const item = useSelector((store) => store.Items.Products);
 
@@ -20,9 +20,12 @@ const TrendingNow = () => {
       return;
     }
   
-    const filteredProducts = item.filter(product => product.slider === "Trendingnow");
+    const filteredProducts = item.filter(product => product.slider === "dealoftheday");
   
     // console.log(filteredProducts);
+
+
+
   return (
     <Swiper
     slidesPerView={4}
@@ -39,18 +42,19 @@ const TrendingNow = () => {
 > 
 {
     filteredProducts.map((p) => (
-        <SwiperSlide  key={p._id} className='p-8'>
-           <img src={p.imageUrl} className='w-36 h-44' alt="health" />
-           <h2  className='text-white font-semibold text-lg p-1'>{p.productName}</h2>
-        </SwiperSlide>
-
+     
+          <SwiperSlide key={p._id}  className='p-8 cursor-pointer bg-gray-600'>
+              <img src={p.imageUrl} className='w-36 h-44' alt="health" />
+              <h2  className='text-white font-semibold text-lg p-1'>{p.productName}</h2>
+          </SwiperSlide>
+     
     )
      )
 }
 
 
 </Swiper>
-  )
+  ) 
 }
 
-export default TrendingNow;
+export default Dealoftheday

@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
 
 
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -45,11 +46,12 @@ const filteredProducts = item.filter(product => product.slider === "TopSellers")
 > 
 {
     filteredProducts.map((p) => (
-        <SwiperSlide  key={p._id} className='p-8'>
+     
+        <SwiperSlide key={p._id}  className='p-8 bg-black'>
            <img src={p.imageUrl} className='w-36 h-44' alt="health" />
            <h2  className='text-white font-semibold text-lg p-1'>{p.productName}</h2>
         </SwiperSlide>
-
+   
     )
      )
 }

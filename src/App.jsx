@@ -4,10 +4,10 @@ import Home from "./Components/Home";
 import Medicines from "./Components/Medicines";
 import Header from "./Components/Header";
 import Sevices from "./Components/Sevices";
-import Contact from "./Components/contact";
 import LoginForm from "./Components/LoginForm";
 import Footer from "./Components/Footer";
 import Productpage from "./Components/Productpage";
+import Cart from "./Components/Cart";
 
 
 
@@ -42,8 +42,8 @@ const App = () => {
           element: <Sevices/>,
         },
         {
-          path: "/contact",
-          element: <Contact/>
+          path: "/cart",
+          element: <Cart/>
         },
         {
           path: "/login",
@@ -59,7 +59,7 @@ const App = () => {
    ])
 
   return (
-    <div className="bg-gradient-to-t from-sky-500 to-cyan-500">
+    <div className="bg-gradient-to-t from-sky-500 to-cyan-500 ">
       <RouterProvider router={appRouter}  />
     </div>
   )
