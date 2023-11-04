@@ -54,13 +54,13 @@ const Accordion = () => {
       {accordionData.map((item, index) => (
         <div key={index} className="mb-4">
           <div
-            className="bg-blue-200 p-2 cursor-pointer rounded"
+            className="bg-blue-300 p-4 cursor-pointer rounded-lg"
             onClick={() => handleClick(index)}
           >
-            <h2 className="text-xl text-center font-bold">{item.title}</h2>
+            <h2 className="text-2xl text-center font-bold">{item.title}</h2>
           </div>
           {activeAccordion === index && (
-            <div className="bg-white p-4">
+            <div className="bg-white p-6">
               <p>{item.content}</p>
             </div>
           )}
